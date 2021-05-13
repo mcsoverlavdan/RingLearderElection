@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="172e8d86-2d01-45d2-96ba-2c0cff29debe" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="C:\Go" />
+  <component name="ProjectId" id="1muO106lavnA41NCrz4LBdQKH4F" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager" selected="Go Build.go build C.go">
+    <configuration name="go build A.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ringleaderlection" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/A/A.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build B.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ringleaderlection" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/B/B.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build C.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ringleaderlection" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/C/C.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build D.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ringleaderlection" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/D/D.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build controller.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ringleaderlection" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/controller.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build C.go" />
+        <item itemvalue="Go Build.go build controller.go" />
+        <item itemvalue="Go Build.go build D.go" />
+        <item itemvalue="Go Build.go build B.go" />
+        <item itemvalue="Go Build.go build A.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1468" height="605" key="GridCell.Tab.0.bottom" timestamp="1610341686727">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1468" height="605" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1610341686727" />
+    <state width="1468" height="605" key="GridCell.Tab.0.center" timestamp="1610341686727">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1468" height="605" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1610341686727" />
+    <state width="1468" height="605" key="GridCell.Tab.0.left" timestamp="1610341686727">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1468" height="605" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1610341686727" />
+    <state width="1468" height="605" key="GridCell.Tab.0.right" timestamp="1610341686727">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1468" height="605" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1610341686727" />
+    <state x="66" y="0" key="SettingsEditor" timestamp="1610340930376">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="66" y="0" key="SettingsEditor/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1610340930376" />
+  </component>
+</project>

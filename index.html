@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Controller</title>
+    <script type="text/javascript">
+
+        // var server =require('ws').Server;
+        // var s=new server({port:8005})
+        // window.onload = function () {
+        //     s.on('connection',function(ws){
+        //         ws.on('message',function(message){
+        //             console.log("Received:"+message)
+        //         });
+        //         ws.on('close',function(){
+        //             console.log("I lost client")
+        //         });
+        //         console.log("client connected!!")
+        //
+        //     });
+        //
+        // };
+
+        window.onload = function () {
+            var conn;
+            var connB;
+            var Leaderconn;
+            var Leaderid;
+            var msg = document.getElementById("msg");
+            var log = document.getElementById("log");
+            var ul = document.getElementById("list");
+
+            function appendLog(item) {
+                var doScroll = log.scrollTop > log.scrollHeight - log.clientHeight - 1;
+                log.appendChild(item);
+                if (doScroll) {
+                    log.scrollTop = log.scrollHeight - log.clientHeight;
+                }
+            }
+
+            // document.getElementById("form").onsubmit = function () {
+            //     if (!conn) {
+            //         return false;
+            //     }
+            //     if (!msg.value) {
+            //         return false;
+            //     }
+            //     conn.send(msg.value);
+            //     msg.value = "";
+            //     return false;
+            // };
+
+            function wait(ms){
+                var start = new Date().getTime();
+                var end = start;
+                while(end < start + ms) {
+                    end = new Date().getTime();
+                }
+            }
+
+
+            if (window["WebSocket"]) {
+                conn = new WebSocket("ws://localhost:8000/ws");
+
+                conn.onopen = function (e) {
+                    console.log("Connection established!");
+                    conn.send('{"action":"controller"}');
+                };
+                conn.onclose = function (evt) {
+                    var item = document.createElement("div");
+                    item.innerHTML = "<b>Connection closed.</b>";
+                    appendLog(item);
+                };
+                conn.onmessage = function (evt) {
+                    var messages = evt.data.split('\n');
+                    console.log(messages)
+                    console.log(messages[0])
+                    console.log(typeof (messages))
+                    if (messages[0]=="Leader"){
+                        Leaderconn=conn
+                        Leaderid ="cardA"
+                        document.getElementById("cardA").setAttribute("class", "card text-white bg-success mb-3");
+
+                    }
+
+
+                    document.getElementById("atext").insertAdjacentHTML('beforeend', "<br><hr><hr>");
+                    document.getElementById("atext").insertAdjacentHTML('beforeend', messages[0]);
+
+
+                    // for (var i = 0; i < messages.length; i++) {
+                    //     var li = document.createElement("li");
+                    //     li.appendChild(document.createTextNode(messages[i]));
+                    //     li.setAttribute("class", "list-group-item");
+                    //     ul.appendChild(li)
+                    //
+                    //
+                    // }
+                };
+                document.getElementById("clickMe").onclick = function () { conn.send('{"action":"initiate"}'); };
+                document.getElementById("killMe").onclick = function () { Leaderconn.send('{"action":"kill"}'); wait(1000);conn.send('{"action":"initiate"}');document.getElementById(Leaderid).setAttribute("class", "card text-white bg-danger mb-3");
+                    document.getElementById("atext").innerHTML="";document.getElementById("btext").innerHTML="";document.getElementById("ctext").innerHTML="";document.getElementById("dtext").innerHTML="";
+                };
+
+
+
+
+
+                connB = new WebSocket("ws://localhost:8001/ws");
+
+                connB.onopen = function (e) {
+                    console.log("Connection established!");
+                    connB.send('{"action":"controller"}');
+                };
+                connB.onclose = function (evt) {
+                    var itemB = document.createElement("div");
+                    itemB.innerHTML = "<b>Connection closed.</b>";
+                    appendLog(itemB);
+                };
+                connB.onmessage = function (evt) {
+                    var messagesB = evt.data.split('\n');
+                    console.log(messagesB)
+                    // for (var i = 0; i < messages.length; i++) {
+                    //     var li = document.createElement("li");
+                    //     li.appendChild(document.createTextNode(messages[i]));
+                    //     li.setAttribute("class", "list-group-item");
+                    //     ul.appendChild(li)
+                    //
+                    //
+                    // }
+                    if (messagesB[0]=="Leader"){
+                        Leaderconn=connB
+                        Leaderid ="cardB"
+                        document.getElementById("cardB").setAttribute("class", "card text-white bg-success mb-3");
+
+                    }
+
+                    document.getElementById("btext").insertAdjacentHTML('beforeend', "<br><hr><hr>");
+                    document.getElementById("btext").insertAdjacentHTML('beforeend', messagesB[0]);
+                };
+                var connC;
+                connC = new WebSocket("ws://localhost:8002/ws");
+
+                connC.onopen = function (e) {
+                    console.log("Connection established!");
+                    connC.send('{"action":"controller"}');
+                };
+                connC.onclose = function (evt) {
+                    var itemB = document.createElement("div");
+                    itemB.innerHTML = "<b>Connection closed.</b>";
+                    appendLog(itemB);
+                };
+                connC.onmessage = function (evt) {
+                    var messagesC = evt.data.split('\n');
+                    console.log(messagesC)
+                    // for (var i = 0; i < messages.length; i++) {
+                    //     var li = document.createElement("li");
+                    //     li.appendChild(document.createTextNode(messages[i]));
+                    //     li.setAttribute("class", "list-group-item");
+                    //     ul.appendChild(li)
+                    //
+                    //
+                    // }
+
+                    if (messagesC[0]=="Leader"){
+                        Leaderconn=connC
+                        Leaderid ="cardC"
+                        document.getElementById("cardC").setAttribute("class", "card text-white bg-success mb-3");
+
+                    }
+
+                    document.getElementById("ctext").insertAdjacentHTML('beforeend', "<br><hr><hr>");
+                    document.getElementById("ctext").insertAdjacentHTML('beforeend', messagesC[0]);
+                };
+
+
+                var connD;
+                connD = new WebSocket("ws://localhost:8003/ws");
+
+                connD.onopen = function (e) {
+                    console.log("Connection established!");
+                    connD.send('{"action":"controller"}');
+                };
+                connD.onclose = function (evt) {
+                    var itemB = document.createElement("div");
+                    itemB.innerHTML = "<b>Connection closed.</b>";
+                    appendLog(itemB);
+                };
+                connD.onmessage = function (evt) {
+                    var messagesD = evt.data.split('\n');
+                    console.log(messagesD)
+                    // for (var i = 0; i < messages.length; i++) {
+                    //     var li = document.createElement("li");
+                    //     li.appendChild(document.createTextNode(messages[i]));
+                    //     li.setAttribute("class", "list-group-item");
+                    //     ul.appendChild(li)
+                    //
+                    //
+                    // }
+
+                    if (messagesD[0]=="Leader"){
+                        Leaderconn=connD
+                        Leaderid ="cardD"
+                        document.getElementById("cardD").setAttribute("class", "card text-white bg-success mb-3");
+
+                    }
+
+                    document.getElementById("dtext").insertAdjacentHTML('beforeend', "<br><hr><hr>");
+                    document.getElementById("dtext").insertAdjacentHTML('beforeend', messagesD[0]);
+                };
+
+
+
+
+            } else {
+                var item = document.createElement("div");
+                item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
+                appendLog(item);
+            }
+        };
+    </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Content here -->
+    <br><br>
+<div id="log"></div>
+<ul class="list-group list-group-flush" id="list">
+</ul>
+
+{{/*<input id="clickMe" type="button" value="clickme" onclick="doFunction();" />*/}}
+
+
+<div class="card-deck mt-5">
+    <div class="card">
+        <div class="card bg-light mb-3" id="cardA" style="max-width: 18rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h5 class="card-title">A</h5>
+                <p class="card-text"> attribute value :90 </p>
+                <p class="card-text" id="atext"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card bg-light mb-3" id="cardB"  style="max-width: 18rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h5 class="card-title">B</h5>
+                <p class="card-text"> attribute value :100 </p>
+                <p class="card-text" id="btext"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card bg-light mb-3" id="cardC" style="max-width: 18rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h5 class="card-title">C</h5>
+                <p class="card-text"> attribute value :110 </p>
+                <p class="card-text" id="ctext"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card bg-light mb-3" id="cardD"  style="max-width: 18rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h5 class="card-title">D</h5>
+                <p class="card-text"> attribute value :120 </p>
+                <p class="card-text" id="dtext"></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br><br>
+<button type="button" id="clickMe" class="btn btn-primary">Initiate leader election</button> <button type="button" id="killMe" class="btn btn-primary">kill leader</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</body>
+</html>
